@@ -1,0 +1,22 @@
+{
+  "name": "mygento/discount-generator",
+  "version": "1.0.0",
+  "license": "OSL-3.0",
+  "description": "Generates Discount.php for different modules and magento versions",
+  "authors": [
+    {
+      "name": "Ruslan Mavlyanov",
+      "email": "r.mavlyanov@mygento.net",
+      "homepage": "http://www.mygento.net/",
+      "role": "Developer"
+    },
+    {
+      "name": "Mygento",
+      "email": "connect@mygento.net",
+      "homepage": "https://www.mygento.ru/"
+    }
+  ],
+  "require": {
+    "nette/php-generator": "3.1.0"
+  }
+}
