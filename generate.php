@@ -44,3 +44,5 @@ if ($args['p'] == 'm1') {
 
     $generator->generate();
 }
+
+echo '0';
