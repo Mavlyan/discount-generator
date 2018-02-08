@@ -26,6 +26,10 @@ case "$item" in
         ;;
 esac
 
+echo
+echo "=== Formatting file ==="
+php vendor/bin/phpcbf --standard=vendor/magento-ecg/coding-standard/Ecg,vendor/mygento/coding-standard/Mygento-Mage1  ./target/
+
 if [ "$result" == "0" ]; then
     echo "${green}Файл успешно сгенерен. В папке ./target вас ждет свежий файл.${reset}"
 else
