@@ -62,7 +62,7 @@ PHP;
         $method = call_user_func(['parent', __FUNCTION__]);
 
         $placeholder = <<<'PHP'
-            $storeId  = $this->_entity->getStoreId();
+            $storeId  = $entity->getStoreId();
             $store    = $storeId ? Mage::app()->getStore($storeId) : Mage::app()->getStore();
 
             $taxValue = Mage::getResourceModel('catalog/product')->getAttributeRawValue(

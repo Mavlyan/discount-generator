@@ -52,6 +52,9 @@ class Generator
         $this->addMethodToClass('getRecalculated');
         $this->addMethodToClass('applyDiscount');
         $this->addMethodToClass('getGlobalDiscount');
+        $this->addMethodToClass('preFixLowDiscount');
+        $this->addMethodToClass('postFixLowDiscount');
+        $this->addMethodToClass('getDiscountIncrement');
         $this->addMethodToClass('setSimplePrices');
         $this->addMethodToClass('buildFinalArray');
         $this->addMethodToClass('_buildItem');
@@ -97,6 +100,9 @@ class Generator
         $this->addMethodToClass('getRecalculated');
         $this->addMethodToClass('applyDiscount');
         $this->addMethodToClass('getGlobalDiscount');
+        $this->addMethodToClass('preFixLowDiscount');
+        $this->addMethodToClass('postFixLowDiscount');
+        $this->addMethodToClass('getDiscountIncrement');
         $this->addMethodToClass('setSimplePrices');
         $this->addMethodToClass('buildFinalArray');
         $this->addMethodToClass('_buildItem');
