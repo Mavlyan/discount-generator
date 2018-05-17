@@ -4,7 +4,7 @@ namespace Mygento\Discount\Generator;
 
 abstract class Source
 {
-    const DISCOUNT_VERSION = '1.0.14';
+    const DISCOUNT_VERSION = '1.0.15';
 
     public static function getConstants()
     {
@@ -266,7 +266,7 @@ NOW;
             }
 
             $shippingAmount = $this->_entity->getData('shipping_incl_tax');
-            $grandTotal     = round($this->_entity->getData('grand_total'), 2);
+            $grandTotal     = $this->getGrandTotal();
             $discount       = round($this->_entity->getData('discount_amount'), 2);
     
             $globDisc = round($grandTotal - $shippingAmount - $totalItemsSum - $discount, 2);
@@ -364,7 +364,7 @@ NOW;
 
         $body = <<<'PHP'
             $items          = $this->getAllItems();
-            $grandTotal     = round($this->_entity->getData('grand_total'), 2);
+            $grandTotal     = $this->getGrandTotal();
             $shippingAmount = $this->_entity->getData('shipping_incl_tax');
     
             $newItemsSum = 0;
@@ -458,7 +458,7 @@ PHP;
     public function getMethod_buildFinalArray()
     {
         $body = <<<'PHP'
-            $grandTotal = round($this->_entity->getData('grand_total'), 2);
+            $grandTotal = $this->getGrandTotal();
     
             $items      = $this->getAllItems();
             $itemsFinal = [];
@@ -897,6 +897,27 @@ PHP;
                 'spreadDiscOnAllUnits' => 'none'
             ],
             'body'     => $body
+        ];
+    }
+
+    public function getMethod_getGrandTotal()
+    {
+        $comment = "Workaround to use GiftCards";
+
+        $body = <<<'PHP'
+        return round(
+            $this->_entity->getData('grand_total') + $this->_entity->getData(
+                'gift_cards_amount'
+            ),
+            2
+        );
+PHP;
+
+        return [
+            'comments'   => $comment,
+            'params'     => [],
+            'body'       => $body,
+            'visibility' => 'protected',
         ];
     }
 }

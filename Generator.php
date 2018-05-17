@@ -71,10 +71,10 @@ class Generator
         $this->addMethodToClass('setIsSplitItemsAllowed');
         $this->addMethodToClass('setDoCalculation');
         $this->addMethodToClass('setSpreadDiscOnAllUnits');
+        $this->addMethodToClass('getGrandTotal');
 
         file_put_contents('./target/Discount.php', "<?php \n" . $this->source->getCopyright());
         file_put_contents('./target/Discount.php', $namespace, FILE_APPEND);
-        //TODO: Run PHPCBF on the new file
     }
 
     public function m1()
@@ -119,13 +119,13 @@ class Generator
         $this->addMethodToClass('setIsSplitItemsAllowed');
         $this->addMethodToClass('setDoCalculation');
         $this->addMethodToClass('setSpreadDiscOnAllUnits');
+        $this->addMethodToClass('getGrandTotal');
 
         $path    = explode('_', $this->class);
         $package = $path[0] . '_' . ($path[1] ?? 'Base');
 
         file_put_contents('./target/Discount.php', "<?php \n" . $this->source->getCopyright($package));
         file_put_contents('./target/Discount.php', $this->classObject, FILE_APPEND);
-        //TODO: Run PHPCBF on the new file
     }
 
     protected function addCommentsToMethod(\Nette\PhpGenerator\Method $method, $comments)
